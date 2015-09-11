@@ -13,6 +13,9 @@ fn sounds_similar() {
     assert!(SoundexWord::new("rupert") == SoundexWord::new("robert"));
     assert!(SoundexWord::new("hey") == SoundexWord::new("hei"));
     assert!(SoundexWord::new("sOundex") == SoundexWord::new("saundecs"));
+    assert!(SoundexWord::new("america") == SoundexWord::new("amurica"));
+    assert!(SoundexWord::new("lambada") == SoundexWord::new("lambda"));
+    assert!(SoundexWord::new("lambada") == SoundexWord::new("lambda"));
 }
 
 #[test]
@@ -27,4 +30,5 @@ fn multiple_words() {
     assert!(SoundexWord::new("hey rupert") == SoundexWord::new("hei robert"));
     assert!(SoundexWord::new("what's up") == SoundexWord::new("wats oop"));
     assert!(SoundexWord::new("my own goat") == SoundexWord::new("mai oun goat"));
+    assert!(SoundexWord::new("lol your stupid") == SoundexWord::new("lul ur stupido"));
 }
