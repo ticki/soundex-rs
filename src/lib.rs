@@ -4,27 +4,29 @@ use itertools::Itertools;
 
 
 #[derive(PartialEq, Hash, Clone)]
+/// A soundex char (collecting the letters into different classes)
 pub enum SoundexChar {
-    // B, F, P, V
+    /// B, F, P, V
     S1,
-    // C, G, J, K, Q, S, X, Z
+    /// C, G, J, K, Q, S, X, Z
     S2,
-    // D, T
+    /// D, T
     S3,
-    // L
+    /// L
     S4,
-    // M, N
+    /// M, N
     S5,
-    // R
+    /// R
     S6,
-    // Vowels
+    /// Vowels
     Vowel,
-    // H, W
+    /// H, W
     HW,
-    // Space
+    /// Space
     Space,
 }
 
+/// Encode a normal char into a soundex char.
 fn encode(ch: char) -> SoundexChar {
     if let Some(c) = ch.to_lowercase().next() {
         match c {
@@ -45,12 +47,14 @@ fn encode(ch: char) -> SoundexChar {
 }
 
 #[derive(PartialEq, Hash, Clone)]
+/// A soundex word (that is, a approximate description of how a given word sound).
 pub struct SoundexWord {
     first_char: char,
     soundex_chars: Vec<SoundexChar>,
 }
 
 impl SoundexWord {
+    /// Generates a soundex word from a string.
     fn new(word: &str) -> SoundexWord {
         let chars = word.chars();
         let first_char = chars.clone().nth(0).unwrap_or('_')
@@ -65,6 +69,7 @@ impl SoundexWord {
             soundex_chars: soundex_chars,
         }
     }
+    /// Convert soundex word to the normal soundex word representation (in form of a string).
     fn to_string(&self) -> String {
         self.first_char.to_string() +
         &self.soundex_chars.iter().map(|x| {
