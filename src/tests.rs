@@ -15,7 +15,6 @@ fn sounds_similar() {
     assert!(SoundexWord::new("sOundex") == SoundexWord::new("saundecs"));
     assert!(SoundexWord::new("america") == SoundexWord::new("amurica"));
     assert!(SoundexWord::new("lambada") == SoundexWord::new("lambda"));
-    assert!(SoundexWord::new("lambada") == SoundexWord::new("lambda"));
 }
 
 #[test]
