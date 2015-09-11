@@ -21,3 +21,10 @@ fn does_not_sound_similar() {
     assert!(SoundexWord::new("nope") != SoundexWord::new("doop"));
     assert!(SoundexWord::new("goat") != SoundexWord::new("goal"));
 }
+
+#[test]
+fn multiple_words() {
+    assert!(SoundexWord::new("hey rupert") == SoundexWord::new("hei robert"));
+    assert!(SoundexWord::new("what's up") == SoundexWord::new("wats oop"));
+    assert!(SoundexWord::new("my own goat") == SoundexWord::new("mai oun goat"));
+}

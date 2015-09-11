@@ -21,19 +21,22 @@ pub enum SoundexChar {
     Vowel,
     // H, W
     HW,
+    // Space
+    Space,
 }
 
 fn encode(ch: char) -> SoundexChar {
     if let Some(c) = ch.to_lowercase().next() {
         match c {
-            'b' | 'f' | 'p' | 'v' => SoundexChar::S1,
+            'b' | 'f' | 'p' | 'v'                         => SoundexChar::S1,
             'c' | 'g' | 'j' | 'k' | 'q' | 's' | 'x' | 'z' => SoundexChar::S2,
-            'd' | 't' => SoundexChar::S3,
-            'l' => SoundexChar::S4,
-            'm' | 'n' => SoundexChar::S5,
-            'r' => SoundexChar::S6,
-            'h' | 'w' => SoundexChar::HW,
-            _ => SoundexChar::Vowel,
+            'd' | 't'                                     => SoundexChar::S3,
+            'l'                                           => SoundexChar::S4,
+            'm' | 'n'                                     => SoundexChar::S5,
+            'r'                                           => SoundexChar::S6,
+            'h' | 'w'                                     => SoundexChar::HW,
+            ' '                                           => SoundexChar::Space,
+            _                                             => SoundexChar::Vowel,
 
         }
     } else {
@@ -72,6 +75,7 @@ impl SoundexWord {
                 SoundexChar::S4 => "4",
                 SoundexChar::S5 => "5",
                 SoundexChar::S6 => "6",
+                SoundexChar::Space => " ",
                 _               => "_",
             }.to_string()
         }).join("")
